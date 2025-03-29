@@ -1,54 +1,123 @@
-# React + TypeScript + Vite
+# 🧠 React Chat UI for FastAPI + Ollama
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A lightweight and responsive chat interface built with **React**, **Vite**, and **Tailwind CSS**, designed to interact with a FastAPI backend powered by **Ollama** (LLaMA3 model).
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- ⚛️ Built with React + Vite for fast development
+- 💬 Connects to FastAPI `/ask` endpoint
+- 📦 Tailwind CSS for responsive UI
+- 🔁 Async request handling with loading state
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 📦 Project Structure
+
+```
+ollama-chat/
+├── src/
+│   ├── App.tsx          # Main chat component
+│   ├── index.tsx        # Entry point
+│   └── index.css        # Tailwind CSS styles
+├── public/
+├── .gitignore
+├── index.html
+├── package.json
+├── tailwind.config.js
+├── postcss.config.js
+└── vite.config.ts
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
+
+## ⚙️ Setup
+
+### 1. Clone the repo
+```bash
+git clone <your-repo-url> ollama-chat
+cd ollama-chat
+```
+
+### 2. Install dependencies
+```bash
+npm install
+```
+
+### 3. Configure Tailwind CSS
+Tailwind is already set up. If needed, update `tailwind.config.js`:
 
 ```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+content: [
+  "./index.html",
+  "./src/**/*.{js,ts,jsx,tsx}"
+]
 ```
+
+### 4. Run the app
+```bash
+npm run dev
+```
+
+Go to: [http://localhost:5173](http://localhost:5173)
+
+---
+
+## 🔗 FastAPI Endpoint Required
+Make sure you have a backend running at:
+
+```http
+POST http://localhost:8000/ask
+```
+
+It should receive a payload:
+```json
+{ "prompt": "Why is the sky blue?" }
+```
+
+And return a response like:
+```json
+{ "result": "The sky appears blue because of Rayleigh scattering..." }
+```
+
+---
+
+## 🧪 Testing
+You can test the endpoint separately using `curl`:
+
+```bash
+curl -X POST http://localhost:8000/ask \
+     -H "Content-Type: application/json" \
+     -d '{ "prompt": "Tell me a joke" }'
+```
+
+---
+
+## 🎨 UI Preview
+
+> Chat interface includes:
+> - Textarea input
+> - Loading state
+> - Display of API response
+
+You can customize it with avatars, chat bubbles, and history.
+
+---
+
+## 📚 Tech Stack
+- React + Vite
+- Tailwind CSS
+- Axios
+- FastAPI (Backend)
+- Ollama (LLaMA3)
+
+---
+
+## 🥚 Easter Egg
+> **"¡Vamooo Ñubeeeeeeee!"** — The Ñubel Dev rallying cry 🔥
+
+---
+
+## 📜 License
+MIT License. Use it, hack it, ship it. 🚀
