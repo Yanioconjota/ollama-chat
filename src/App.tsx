@@ -12,8 +12,8 @@ function App() {
     setLoading(true)
     setResponse('')
     try {
-      const res = await axios.post('http://localhost:8000/ask', { prompt })
-      setResponse(res.data.result)
+      const res = await axios.post('/ask', { prompt })
+      setResponse(res.data.response)
     } catch (err) {
       setResponse(`❌ ${err} getting response from API`)
     } finally {
